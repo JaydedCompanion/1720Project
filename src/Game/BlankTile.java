@@ -2,8 +2,6 @@
 //
 // 	BlankTile.java			Author: Juan Callejas       ID:216 631 905
 //
-//	[[[ ENTER DESCRIPTION HERE ]]]
-//
 //*************************************************************************
 package Game;
 
@@ -30,7 +28,7 @@ public class BlankTile extends GridTileBase {
 		//snippet of code will automatically find the spritesheet cor-
 		//responding to this variant.
 		setAnimPath("../Res/Empty." + variant.name() + ".png");
-		setAnimSpeed(NORMAL);
+		setAnimSpeed(SLOW);
 		setSpriteSheetColumns(1);
 		
 		//Some spritesheets have a varying number of columns; override them here

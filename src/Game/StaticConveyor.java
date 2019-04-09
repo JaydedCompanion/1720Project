@@ -9,9 +9,9 @@ package Game;
 
 enum Dir {
 	
-	Left,
-	Right,
-	Forward
+	L,
+	R,
+	FW
 	
 }
 
@@ -29,15 +29,15 @@ public class StaticConveyor extends GridTileBase {
 		
 		switch (dir) {
 			
-			case Left:
+			case L:
 				setAnimPath(imgPath_L);
 				break;
 			
-			case Right:
+			case R:
 				setAnimPath(imgPath_R);
 				break;
 			
-			case Forward:
+			case FW:
 				setAnimPath(imgPath_FW);
 				break;
 			
@@ -52,6 +52,15 @@ public class StaticConveyor extends GridTileBase {
 class InvalidConveyorDirException extends RuntimeException {
 	
 	private Dir invalidDir;
+	
+	public InvalidConveyorDirException(Dir dir, Dir[] allowed) {
+		
+		super ("Attempted to set Conveyor direction to " + dir.name() + " which has been disabled for this conveyor." +
+			   "Please use one of the following allowed dirs: " + allowed.toString());
+		
+		invalidDir = dir;
+		
+	}
 	
 	public InvalidConveyorDirException(Dir dir) {
 		

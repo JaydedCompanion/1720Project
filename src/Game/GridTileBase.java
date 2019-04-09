@@ -1,3 +1,9 @@
+//*************************************************************************
+//
+// 	GridTileBase.java	Author: Juan Callejas		ID:216 631 905
+//
+//*************************************************************************
+
 package Game;
 
 import javafx.animation.Animation;
@@ -14,6 +20,9 @@ public class GridTileBase {
 	protected static final String imgPath_L  = "../Res/Conv.L.png";
 	protected static final String imgPath_R  = "../Res/Conv.R.png";
 	protected static final String imgPath_FW = "../Res/Conv.FW.png";
+	protected static final String imgPath_C_L  = "../Res/Directional.L.png";
+	protected static final String imgPath_C_R  = "../Res/Directional.R.png";
+	protected static final String imgPath_C_FW = "../Res/Directional.FW.png";
 	
 	protected static final int COLUMNS_CONV   = 6;
 	protected static final int COLUMNS_BLANK  = 8;
@@ -67,5 +76,7 @@ public class GridTileBase {
 	protected void setAnimPath (String val) {animPath = val;}
 	protected void setAnimSpeed (int val) {animSpeed = val;}
 	protected void setSpriteSheetColumns (int val) {spriteSheetColumns = val;}
+	//Getters for child classes
+	protected SpriteAnimation getAnim () {return anim;}
 	
 }
