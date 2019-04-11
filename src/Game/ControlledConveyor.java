@@ -37,7 +37,7 @@ public class ControlledConveyor extends GridTileBase {
 		//All conveyor animations have the same frame duration (FAST)
 		setAnimSpeed(NORMAL);
 		//All conveyor animations also have the same amount of columns
-		setSpriteSheetColumns(5);
+		setSpriteSheetColumns(COLUMNS_CONV);
 		
 		//Define our list of allowed dirs by casting the passed array to an ArrayList
 		this.allowedDirs = new ArrayList<Dir>(Arrays.asList(allowedDirs));

@@ -41,12 +41,16 @@ public class Main extends Application {
 	    
 	    System.out.println(layout.getConveyor(0, 1));
 	
-		layout.fillEmptyTiles();
+		layout.fillEmptyTiles(new BlankVariants[]{
+				BlankVariants.Padding,
+				BlankVariants.Quarters
+		});
 	    
 	    layout.setAlignment(Pos.CENTER);
 	
 		Button cycle = new Button(">");
 		layout.add(cycle, 0, 0);
+		cycle.setPrefSize(64,64);
 		cycle.addEventHandler(ActionEvent.ACTION, new EventHandler<ActionEvent>() {
 			@Override
 			public void handle (ActionEvent event) {
@@ -57,8 +61,8 @@ public class Main extends Application {
         primaryStage.setTitle("SpriteAnimation Test!");
         primaryStage.setScene(new Scene(
         		layout,
-				(layout.getCols()+1)*32,
-				(layout.getRows()+1)*32
+				(layout.getCols()+1)*64,
+				(layout.getRows()+1)*64
 		));
         primaryStage.show();
     }

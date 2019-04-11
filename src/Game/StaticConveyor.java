@@ -22,9 +22,9 @@ public class StaticConveyor extends GridTileBase {
 	public StaticConveyor(Dir dir) {
 		
 		//All static conveyor animations have the same frame duration (FAST)
-		setAnimSpeed(FAST);
+		setAnimSpeed(NORMAL);
 		//All static conveyor animations also have the same amount of columns
-		setSpriteSheetColumns(6);
+		setSpriteSheetColumns(COLUMNS_CONV);
 		direction = dir;
 		
 		switch (dir) {
