@@ -111,6 +111,13 @@ public class Main extends Application {
 				ControlledConveyor.cycleAllDir();
 			}
 		});
+	
+	    // Close button
+		primaryStage.setOnCloseRequest(e -> Platform.exit());
+		Button closeButton = new Button("Close Program");
+		closeButton.setOnAction(e -> Platform.exit());
+	    
+	    // >Will need to find reset button next.<
 	    
         primaryStage.setTitle("SpriteAnimation Test!");
         primaryStage.setScene(new Scene(
