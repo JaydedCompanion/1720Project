@@ -52,6 +52,8 @@ public class Main extends Application {
 		layout.add(new StaticConveyor(Dir.FW), 4, -7);
 		layout.add(new StaticConveyor(Dir.FW), 4, -8);
 		layout.add(controlledConveyors[2], 4, -9);
+	        layout.add(new StaticConveyor(Dir.R), 5, -9);
+		layout.add(new StaticConveyor(Dir.R), 6, -9);
 		
 		// MIDDLE-RIGHT CONVEYOR
 		layout.add(new StaticConveyor(Dir.FW), 7, -1);
@@ -68,6 +70,8 @@ public class Main extends Application {
 		layout.add(new StaticConveyor(Dir.FW), 7, -7);
 		layout.add(new StaticConveyor(Dir.FW), 7, -8);
 		layout.add(controlledConveyors[4], 7, -9);
+	        layout.add(new StaticConveyor(Dir.R), 8, -9);
+		layout.add(new StaticConveyor(Dir.R), 9, -9);
 		
 		// RIGHT CONVEYOR
 		layout.add(new StaticConveyor(Dir.FW), 10, -1);
@@ -102,22 +106,26 @@ public class Main extends Application {
 	    
 	    layout.setAlignment(Pos.CENTER);
 	
+	        // Directional Conveyors
 		Button cycle = new Button("Click");
 		layout.add(cycle, 0, 0);
 		cycle.setPrefSize(64,64);
+	    
+	        // Close button
+	    	Button closeButton = new Button("Close Program");
+	        layout.add(closeButton, 0, 1);
+		closeButton.setPrefSize (64, 64);
+		primaryStage.setOnCloseRequest(e -> Platform.exit());
+		closeButton.setOnAction(e -> Platform.exit());
+	    
+	    // >Will need to find reset button next.<
+	    
 		cycle.addEventHandler(ActionEvent.ACTION, new EventHandler<ActionEvent>() {
 			@Override
 			public void handle (ActionEvent event) {
 				ControlledConveyor.cycleAllDir();
 			}
 		});
-	
-	    // Close button
-		primaryStage.setOnCloseRequest(e -> Platform.exit());
-		Button closeButton = new Button("Close Program");
-		closeButton.setOnAction(e -> Platform.exit());
-	    
-	    // >Will need to find reset button next.<
 	    
         primaryStage.setTitle("SpriteAnimation Test!");
         primaryStage.setScene(new Scene(
