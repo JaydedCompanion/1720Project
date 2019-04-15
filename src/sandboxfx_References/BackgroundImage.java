@@ -9,6 +9,16 @@ import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
 
 public class BackgroundImage extends Application {
+	
+	/*
+
+	 * The code in this class is from https://www.youtube.com/watch?v=F8bY18QAj6U
+	 *
+	 * This code is "vital" to the functionality of the game (so that the game has a background), but since it is not
+	 * used to fulfill any of the assignment requirements we request it be ignored for academic purposes as we take
+	 * no credit for it and we will simply use it as a pre-written library by a 3rd party.
+
+	 */
 
 	public void start(Stage stage) {
 		
