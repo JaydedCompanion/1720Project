@@ -16,6 +16,16 @@ import javafx.stage.Stage;
 import javafx.util.Duration;
 
 public class SlidingViews extends Application {
+	
+	/*
+
+	 * The code in this class is from https://stackoverflow.com/questions/27089627/javafx-switch-scene-with-slide-effect
+	 *
+	 * This code is "vital" to the functionality of the game (so that the game has a slidingviews effect), but since it is not
+	 * used to fulfill any of the assignment requirements we request it be ignored for academic purposes as we take
+	 * no credit for it and we will simply use it as a pre-written library by a 3rd party.
+
+	 */
 
     @Override
     public void start(Stage primaryStage) {
