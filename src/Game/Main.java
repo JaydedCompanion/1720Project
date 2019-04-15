@@ -1,4 +1,3 @@
-
 package Game;
 
 import javafx.application.Application;
@@ -147,7 +146,6 @@ public class Main extends Application {
 		destCircle.setStroke(Color.WHITESMOKE);
 		layout.add(destCircle, 4, 0);
 
-
 		Rectangle destRect2 = new Rectangle(64, 64);
 		destRect2.setArcWidth(30);
 		destRect2.setArcHeight(30);
@@ -164,9 +162,14 @@ public class Main extends Application {
 
 		GUI gui = new GUI(layout, controlledConveyors, tileTracker, startingPointTo, startingPointFrom, primaryStage);
 
-
-
-		// >Will need to find reset button next.<
+		// "Restart" Button
+		Button restartButton = new Button("Restart");
+          	layout.add(restartButton, 2, 11);
+		restartButton.setOnAction(__ -> {
+			System.out.println("Restarting game!");
+			Platform.runLater(() -> new ResetFinal().start(new Stage()));
+			primaryStage.setScene(new Scene(new StackPane(layout)));
+		});
 
 		primaryStage.setTitle("SpriteAnimation Test!");
 		primaryStage.setScene(new Scene(
