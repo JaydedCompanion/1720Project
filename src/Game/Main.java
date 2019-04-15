@@ -1,4 +1,3 @@
-
 package Game;
 
 import javafx.application.Application;
@@ -8,6 +7,7 @@ import javafx.event.EventType;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.scene.layout.StackPane;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
 import javafx.scene.shape.Ellipse;
@@ -141,9 +141,6 @@ public class Main extends Application {
 
 		layout.setAlignment(Pos.CENTER);
 
-
-		// >Will need to find reset button next.<
-
 		primaryStage.setTitle("SpriteAnimation Test!");
 		primaryStage.setScene(new Scene(
 				layout,
@@ -173,13 +170,14 @@ public class Main extends Application {
 
 		GUI gui = new GUI(layout, controlledConveyors, tileTracker, startingPointTo, startingPointFrom, primaryStage);
 
-		        // "Restart" Button
+	// "Restart" Button
         Button restartButton = new Button("Restart");
-        layout.add(restartButton, 2, 11);
-        restartButton.setOnAction(__ -> {
-            System.out.println("Restarting game!");
-      // 	Platform.runLater(() -> new ResetFinal().start(new Stage()));
-				primaryStage.setScene(new Scene(new TileGrid(12, 11)));
+    	layout.add(restartButton, 2, 11);
+	restartButton.setOnAction(__ -> {
+	System.out.println("Restarting game!");
+	Platform.runLater(() -> new Reset().start(new Stage()));
+	primaryStage.setScene(new Scene(new StackPane(layout)));
+	//primaryStage.setScene(new Scene(new TileGrid(12, 11)));
         });
 	}
 
