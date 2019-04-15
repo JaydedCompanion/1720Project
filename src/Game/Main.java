@@ -162,13 +162,9 @@ public class Main extends Application {
 
 		layout.setAlignment(Pos.CENTER);
 
-		GUI gui = new GUI(layout, controlledConveyors, tileTracker, startingPointTo, startingPointFrom);
+		GUI gui = new GUI(layout, controlledConveyors, tileTracker, startingPointTo, startingPointFrom, primaryStage);
 
 
-		// Close button
-		primaryStage.setOnCloseRequest(e -> Platform.exit());
-		Button closeButton = new Button("Close Program");
-		closeButton.setOnAction(e -> Platform.exit());
 
 		// >Will need to find reset button next.<
 

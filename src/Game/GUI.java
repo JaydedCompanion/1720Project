@@ -1,6 +1,7 @@
 package Game;
 
 import javafx.animation.PathTransition;
+import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.control.Button;
@@ -12,16 +13,21 @@ import javafx.util.Duration;
 import java.lang.Math;
 import java.awt.geom.Point2D;
 import java.util.HashMap;
-
+import javafx.stage.Stage;
 
 
 public class GUI {
 
     private boolean complete;
 
-    public GUI(TileGrid pane, ControlledConveyor[] controlledConveyors, HashMap<Point2D.Double, Dir> tileTracker, int startingPointTo, int startingPointFrom) {
+    public GUI(TileGrid pane, ControlledConveyor[] controlledConveyors, HashMap<Point2D.Double, Dir> tileTracker, int startingPointTo, int startingPointFrom, Stage primaryStage) {
 
 
+        Button closeButton = new Button("Close");
+        pane.add(closeButton, 11, 11);
+        primaryStage.setOnCloseRequest(e -> Platform.exit());
+
+        closeButton.setOnAction(e -> Platform.exit());
         controlledConveyors[0].setDir(Dir.FW);
         controlledConveyors[2].setDir(Dir.FW);
         controlledConveyors[5].setDir(Dir.FW);
