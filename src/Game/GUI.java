@@ -1,6 +1,7 @@
 package Game;
 
 import javafx.animation.PathTransition;
+import javafx.animation.TranslateTransition;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -9,11 +10,14 @@ import javafx.scene.shape.LineTo;
 import javafx.scene.shape.MoveTo;
 import javafx.scene.shape.Path;
 import javafx.scene.shape.Rectangle;
+import javafx.scene.transform.Translate;
 import javafx.util.Duration;
 import java.lang.Math;
 import java.awt.geom.Point2D;
 import java.util.HashMap;
 import javafx.stage.Stage;
+import javafx.scene.Scene;
+
 
 
 public class GUI {
@@ -21,6 +25,8 @@ public class GUI {
     private boolean complete;
 
     public GUI(TileGrid pane, ControlledConveyor[] controlledConveyors, HashMap<Point2D.Double, Dir> tileTracker, int startingPointTo, int startingPointFrom, Stage primaryStage) {
+
+
 
 
         Button closeButton = new Button("Close");
@@ -31,6 +37,8 @@ public class GUI {
         controlledConveyors[0].setDir(Dir.FW);
         controlledConveyors[2].setDir(Dir.FW);
         controlledConveyors[5].setDir(Dir.FW);
+
+
 
         Button switch1 = new Button("^");
         pane.add(switch1, 1, 11);
@@ -140,55 +148,76 @@ public class GUI {
 
         });
 
+        //button to generate next piece
         Button go = new Button("go!");
         pane.add(go, 0, 11, 2, 1);
         go.addEventHandler(ActionEvent.ACTION, new EventHandler<ActionEvent>() {
             @Override
             public void handle (ActionEvent event) {
-                //System.out.println(pane.getConveyor(1, 11));
-                //place rect on first child's tile
 
-                int startPoint = (int)Math.random()*(startingPointTo-startingPointFrom+startingPointTo);
-
-                Rectangle rect = new Rectangle(pane.getChildren().get(startPoint).getLayoutX()+32,
-                        pane.getChildren().get(startPoint).getLayoutY()+32, 64, 64);
-
-                pane.add(rect, 2, 7);
-
+                //random start point for the next piece
+                int range = startingPointTo - startingPointFrom + 1;
+                int startPoint = (int)(Math.random() * range)+startingPointFrom ;
                 Path p1 = new Path();
+
+                Rectangle obj = new Rectangle(15,15, 64, 64);
+
+                //place object on the starting point
+                switch (startPoint) {
+                    case 30: {
+                        pane.add(obj, 1, 10);
+                  //      System.out.println(pane.getConveyor(1, 10));
+                        break;
+                    }
+
+                    case 31: {
+                        pane.add(obj, 4, 10);
+                  //      System.out.println(pane.getConveyor(4, 10));
+                        break;
+                    }
+
+                    case 32: {
+                        pane.add(obj, 7, 10);
+                  //      System.out.println(pane.getConveyor(7, 10));
+                        break;
+                    }
+
+                    case 33: {
+                        pane.add(obj, 10, 10);
+                  //     System.out.println(pane.getConveyor(10, 10));
+                        break;
+                    }
+
+                }
+
+                // transition object one
+                TranslateTransition tt1 = new TranslateTransition(Duration.millis(500), obj);
+                tt1.setByY(-64);
+                tt1.play();
 
 
                 complete = false;
 
                 while (!complete) {
-                    switch (tileTracker.get(new Point2D.Double(rect.getX(), rect.getY()))) {
+                    switch (tileTracker.get(new Point2D.Double(obj.getX(), obj.getY()))) {
                         case FW:
-                            p1.getElements().add(new LineTo(rect.getX() + 32, rect.getY() - 32));
+                            tt1.setByY(-64);
                             break;
                         case L:
-                            p1.getElements().add(new LineTo(rect.getX() - 32, rect.getY() + 32));
+                            tt1.setByX(-64);
                             break;
                         case R:
-                            p1.getElements().add(new LineTo(rect.getX() + 32, rect.getY() + 32));
+                            tt1.setByX(+64);
                             break;
                     }
-                    if (rect.getX() == pane.getChildren().get(12).getLayoutX()
-                            && rect.getY() == pane.getChildren().get(12).getLayoutX()){
+
+                    //96 and 21 are coordinates of the destination square for testing
+                    if (obj.getX() == 96 && obj.getY() == pane.getChildren().get(21).getLayoutX()){
                         complete = true;
                     }
 
                 }
 
-                p1.getElements().add (new MoveTo(pane.getChildren().get(0).getLayoutX()+64,
-                        pane.getChildren().get(0).getLayoutY()+64));
-
-
-
-                PathTransition pt1 = new PathTransition();
-                pt1.setDuration(Duration.millis(1000));
-                pt1.setNode(rect);
-                pt1.setPath(p1);
-                pt1.play();
             }
         });
     }

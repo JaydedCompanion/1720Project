@@ -1,3 +1,4 @@
+
 package Game;
 
 import javafx.application.Application;
@@ -41,7 +42,7 @@ public class Main extends Application {
 		final int staticConveyorsR = 6;
 		final int staticConveyorsL = 6;
 		final int startingPointFrom = 30;
-		final int startingPointTo = 30;
+		final int startingPointTo = 33;
 
 		//reordered to retrieve children and their locations for the hashmap
 		layout.add(new StaticConveyor(Dir.FW), 1, -2); //0
@@ -102,30 +103,9 @@ public class Main extends Application {
 		layout.add(controlledConveyors[5], 10, -4); //51
 
 
-
 		HashMap<Point2D.Double, Dir> tileTracker = new HashMap<>();
 
 		int count = 0;
-
-		// to map directions of static FW conveoyrs
-		for (int i = 0; i<staticConveyorsFW; i++) {
-
-			tileTracker.put(new Point2D.Double((layout.getChildren().get(i).getLayoutX()), (layout.getChildren().get(i).getLayoutY())), Dir.FW);
-			count++;
-		}
-
-		for (int i = count; i<staticConveyorsR+staticConveyorsFW; i++) {
-
-			tileTracker.put(new Point2D.Double((layout.getChildren().get(i).getLayoutX()), (layout.getChildren().get(i).getLayoutY())), Dir.R);
-			count++;
-		}
-
-		for (int i = count; i<staticConveyorsL+staticConveyorsR+staticConveyorsFW; i++) {
-
-			tileTracker.put(new Point2D.Double((layout.getChildren().get(i).getLayoutX()), (layout.getChildren().get(i).getLayoutY())), Dir.L);
-			count++;
-		}
-
 
 
 		System.out.println(layout.getConveyor(0, 1));
@@ -146,6 +126,7 @@ public class Main extends Application {
 		destCircle.setStroke(Color.WHITESMOKE);
 		layout.add(destCircle, 4, 0);
 
+
 		Rectangle destRect2 = new Rectangle(64, 64);
 		destRect2.setArcWidth(30);
 		destRect2.setArcHeight(30);
@@ -160,16 +141,8 @@ public class Main extends Application {
 
 		layout.setAlignment(Pos.CENTER);
 
-		GUI gui = new GUI(layout, controlledConveyors, tileTracker, startingPointTo, startingPointFrom, primaryStage);
 
-		// "Restart" Button
-		Button restartButton = new Button("Restart");
-          	layout.add(restartButton, 2, 11);
-		restartButton.setOnAction(__ -> {
-			System.out.println("Restarting game!");
-			Platform.runLater(() -> new ResetFinal().start(new Stage()));
-			primaryStage.setScene(new Scene(new StackPane(layout)));
-		});
+		// >Will need to find reset button next.<
 
 		primaryStage.setTitle("SpriteAnimation Test!");
 		primaryStage.setScene(new Scene(
@@ -178,7 +151,38 @@ public class Main extends Application {
 				(layout.getRows()+1)*64
 		));
 		primaryStage.show();
+
+		// to map directions of static FW conveyors
+		for (int i = 0; i<staticConveyorsFW; i++) {
+
+			tileTracker.put(new Point2D.Double((layout.getChildren().get(i).getLayoutX()), (layout.getChildren().get(i).getLayoutY())), Dir.FW);
+			count++;
+		}
+
+		for (int i = count; i<staticConveyorsR+staticConveyorsFW; i++) {
+
+			tileTracker.put(new Point2D.Double((layout.getChildren().get(i).getLayoutX()), (layout.getChildren().get(i).getLayoutY())), Dir.R);
+			count++;
+		}
+
+		for (int i = count; i<staticConveyorsL+staticConveyorsR+staticConveyorsFW; i++) {
+
+			tileTracker.put(new Point2D.Double((layout.getChildren().get(i).getLayoutX()), (layout.getChildren().get(i).getLayoutY())), Dir.L);
+			count++;
+		}
+
+		GUI gui = new GUI(layout, controlledConveyors, tileTracker, startingPointTo, startingPointFrom, primaryStage);
+
+		        // "Restart" Button
+        Button restartButton = new Button("Restart");
+        layout.add(restartButton, 2, 11);
+        restartButton.setOnAction(__ -> {
+            System.out.println("Restarting game!");
+      // 	Platform.runLater(() -> new ResetFinal().start(new Stage()));
+				primaryStage.setScene(new Scene(new TileGrid(12, 11)));
+        });
 	}
+
 
 	public static void main(String[] args) {
 		launch(args);
