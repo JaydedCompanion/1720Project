@@ -6,6 +6,7 @@ import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.control.Button;
+import javafx.scene.layout.StackPane;
 import javafx.scene.shape.LineTo;
 import javafx.scene.shape.MoveTo;
 import javafx.scene.shape.Path;
@@ -146,6 +147,17 @@ public class GUI {
                     }
                 }
 
+        });
+        
+        // "Restart" Button
+        Button restartButton = new Button("Restart");
+        pane.add(restartButton, 2, 11);
+        restartButton.setOnAction(__ -> {
+            System.out.println("Restarting game!");
+            primaryStage.close();
+            //Quick & dirty fix until an instances arrayList is implemented in Shape.java
+			Platform.runLater( () -> (new Main()).start (new Stage()));
+			//TODO ^^^ Replace this atrocity with something cleaner asap
         });
 
         //button to generate next piece

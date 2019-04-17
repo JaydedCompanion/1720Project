@@ -154,17 +154,7 @@ public class Main extends Application {
 		}
 
 		GUI gui = new GUI(layout, controlledConveyors, tileTracker, startingPointTo, startingPointFrom, primaryStage);
-
-	// "Restart" Button
-		Button restartButton = new Button("Restart");
-		layout.add(restartButton, 2, 11);
-		restartButton.setOnAction(__ -> {
-			System.out.println("Restarting game!");
-			primaryStage.close();
-			primaryStage.setScene(new Scene(new StackPane(layout)));
-			//primaryStage.setScene(new Scene(new TileGrid(12, 11)));
-			primaryStage.show();
-		});
+		
 	}
 
 
