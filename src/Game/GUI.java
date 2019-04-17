@@ -45,10 +45,13 @@ public class GUI {
     	
 
 
-        Button closeButton = new Button("Close");
-        primaryStage.setOnCloseRequest(e -> Platform.exit());
-
-        closeButton.setOnAction(e -> Platform.exit());
+        // Close Button    
+	    Button closeButton = new Button("Close");
+        closeButton.setOnAction(new EventHandler<ActionEvent>() {
+	        public void handle(ActionEvent event) {
+	          Platform.exit();
+	        }
+	      });
 
 
 	
