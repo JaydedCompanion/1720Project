@@ -104,40 +104,21 @@ public class Main extends Application {
 
 
 		HashMap<Point2D.Double, Dir> tileTracker = new HashMap<>();
-
-		int count = 0;
-
-
-		System.out.println(layout.getConveyor(0, 1));
+		
+		// destination pieces
+		Destination destCircle = new Destination(ShapeTypes.circle);
+		layout.add(destCircle, 1, 0);
+		
+		Destination destSquare = new Destination(ShapeTypes.square);
+		layout.add(destSquare, 4,0);
+		
+		Destination destTriangle = new Destination(ShapeTypes.triangle);
+		layout.add(destTriangle, 7, 0);
 
 		layout.fillEmptyTiles(new BlankVariants[]{
 				BlankVariants.Padding,
 				BlankVariants.Quarters
 		});
-
-		// destination pieces
-		Rectangle destRect1 = new Rectangle(64, 64);
-		destRect1.setFill(Color.BLACK);
-		destRect1.setStroke(Color.WHITESMOKE);
-		layout.add(destRect1, 1,0);
-
-		Circle destCircle = new Circle ( 32);
-		destCircle.setFill(Color.BLACK);
-		destCircle.setStroke(Color.WHITESMOKE);
-		layout.add(destCircle, 4, 0);
-
-
-		Rectangle destRect2 = new Rectangle(64, 64);
-		destRect2.setArcWidth(30);
-		destRect2.setArcHeight(30);
-		destRect2.setFill(Color.BLACK);
-		destRect2.setStroke(Color.WHITESMOKE);
-		layout.add(destRect2, 7, 0);
-
-		Ellipse destEllipse = new Ellipse(32,16);
-		destEllipse.setFill(Color.BLACK);
-		destEllipse.setStroke(Color.WHITESMOKE);
-		layout.add(destEllipse, 10, 0);
 
 		layout.setAlignment(Pos.CENTER);
 
@@ -150,6 +131,7 @@ public class Main extends Application {
 		primaryStage.show();
 
 		// to map directions of static FW conveyors
+		int count = 0;
 		for (int i = 0; i<staticConveyorsFW; i++) {
 
 			tileTracker.put(new Point2D.Double((layout.getChildren().get(i).getLayoutX()), (layout.getChildren().get(i).getLayoutY())), Dir.FW);

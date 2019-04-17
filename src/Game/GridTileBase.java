@@ -23,6 +23,9 @@ public class GridTileBase {
 	protected static final String imgPath_C_L  = "../Res/Directional.L.png";
 	protected static final String imgPath_C_R  = "../Res/Directional.R.png";
 	protected static final String imgPath_C_FW = "../Res/Directional.FW.png";
+	protected static final String imgPath_End_Circle  	= "../Res/End.Circle.png";
+	protected static final String imgPath_End_Square  	= "../Res/End.Square.png";
+	protected static final String imgPath_End_Triangle  = "../Res/End.Triangle.png";
 	
 	protected static final int COLUMNS_CONV		= 8;
 	protected static final int SIZE				= 64;
