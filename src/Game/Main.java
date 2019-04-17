@@ -114,6 +114,9 @@ public class Main extends Application {
 		
 		Destination destTriangle = new Destination(ShapeTypes.triangle);
 		layout.add(destTriangle, 7, 0);
+		
+		Destination destTrash = new Destination(ShapeTypes.trash);
+		layout.add(destTrash, 10, 0);
 
 		layout.fillEmptyTiles(new BlankVariants[]{
 				BlankVariants.Padding,

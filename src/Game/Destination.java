@@ -13,7 +13,7 @@ public class Destination extends GridTileBase {
 	
 	public Destination (ShapeTypes shape) {
 		
-		setAnimSpeed(NORMAL);
+		setAnimSpeed(SLOW);
 		//All destination tiles have a single sprite per spritesheet
 		setSpriteSheetColumns(1);
 		this.shape = shape;
@@ -30,6 +30,11 @@ public class Destination extends GridTileBase {
 			
 			case triangle:
 				setAnimPath(imgPath_End_Triangle);
+				break;
+			
+			case trash:
+				setAnimPath(imgPath_End_Trash);
+				setSpriteSheetColumns(COLUMNS_TRASH);
 				break;
 			
 		}

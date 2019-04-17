@@ -3,7 +3,8 @@ package Game;
 enum ShapeTypes {
     circle,
     square,
-    triangle
+    triangle,
+	trash
 }
 
 public class Shape extends GridTileBase {

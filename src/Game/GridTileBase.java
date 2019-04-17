@@ -26,8 +26,10 @@ public class GridTileBase {
 	protected static final String imgPath_End_Circle  	= "../Res/End.Circle.png";
 	protected static final String imgPath_End_Square  	= "../Res/End.Square.png";
 	protected static final String imgPath_End_Triangle  = "../Res/End.Triangle.png";
+	protected static final String imgPath_End_Trash		= "../Res/End.Trash.png";
 	
 	protected static final int COLUMNS_CONV		= 8;
+	protected static final int COLUMNS_TRASH	= 12;
 	protected static final int SIZE				= 64;
 	
 	protected static final int SLOW	= 500;
