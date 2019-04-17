@@ -102,8 +102,25 @@ public class Main extends Application {
 		layout.add(controlledConveyors[4], 7, -4);
 		layout.add(controlledConveyors[5], 10, -4); //51
 
+		// adding coordinates for GetView based on col/row indeces
+		controlledConveyors[0].GetView().setX(layout.getChildren().get(46).getLayoutX());
+		controlledConveyors[1].GetView().setX(layout.getChildren().get(47).getLayoutX());
+		controlledConveyors[2].GetView().setX(layout.getChildren().get(48).getLayoutX());
+		controlledConveyors[3].GetView().setX(layout.getChildren().get(49).getLayoutX());
+		controlledConveyors[4].GetView().setX(layout.getChildren().get(50).getLayoutX());
+		controlledConveyors[5].GetView().setX(layout.getChildren().get(51).getLayoutX());
+
+		controlledConveyors[0].GetView().setX(layout.getChildren().get(46).getLayoutY());
+		controlledConveyors[1].GetView().setX(layout.getChildren().get(47).getLayoutY());
+		controlledConveyors[2].GetView().setX(layout.getChildren().get(48).getLayoutY());
+		controlledConveyors[3].GetView().setX(layout.getChildren().get(49).getLayoutY());
+		controlledConveyors[4].GetView().setX(layout.getChildren().get(50).getLayoutY());
+		controlledConveyors[5].GetView().setX(layout.getChildren().get(51).getLayoutY());
+
 
 		HashMap<Point2D.Double, Dir> tileTracker = new HashMap<>();
+
+
 		
 		// destination pieces
 		Destination destCircle = new Destination(ShapeTypes.circle);
@@ -141,17 +158,33 @@ public class Main extends Application {
 			count++;
 		}
 
+		// to map directions of static R conveyors
 		for (int i = count; i<staticConveyorsR+staticConveyorsFW; i++) {
 
 			tileTracker.put(new Point2D.Double((layout.getChildren().get(i).getLayoutX()), (layout.getChildren().get(i).getLayoutY())), Dir.R);
 			count++;
 		}
 
+		// to map directions of static L conveyors
 		for (int i = count; i<staticConveyorsL+staticConveyorsR+staticConveyorsFW; i++) {
 
 			tileTracker.put(new Point2D.Double((layout.getChildren().get(i).getLayoutX()), (layout.getChildren().get(i).getLayoutY())), Dir.L);
 			count++;
 		}
+
+		// to map directions of controlled conveyors (FW by default..)
+		for (int i = count; i<staticConveyorsL+staticConveyorsR+staticConveyorsFW + controlledConveyors.length; i++) {
+
+			tileTracker.put(new Point2D.Double((layout.getChildren().get(i).getLayoutX()), (layout.getChildren().get(i).getLayoutY())), Dir.FW);
+			count++;
+		}
+
+
+
+		System.out.println("BOOOO " + tileTracker);
+		System.out.println(controlledConveyors[1].GetView().getX());
+		System.out.println(controlledConveyors[1].GetView().getY());
+
 
 		GUI gui = new GUI(layout, controlledConveyors, tileTracker, startingPointTo, startingPointFrom, primaryStage);
 

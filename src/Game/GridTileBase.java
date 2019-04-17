@@ -11,11 +11,14 @@ import javafx.geometry.Rectangle2D;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.util.Duration;
+import javafx.scene.Node;
 
 import java.util.Random;
 
 public class GridTileBase {
-	
+
+
+
 	//Static Vars
 	protected static final String imgPath_L  = "../Res/Conv.L.png";
 	protected static final String imgPath_R  = "../Res/Conv.R.png";

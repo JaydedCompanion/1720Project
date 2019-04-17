@@ -51,6 +51,10 @@ public class GUI {
                         switch1.setText("^");
                         controlledConveyors[0].setDir(Dir.FW);
                         controlledConveyors[2].setDir(Dir.FW);
+
+                        tileTracker.put(new Point2D.Double(controlledConveyors[0].GetView().getX(), controlledConveyors[0].GetView().getY()), Dir.FW);
+                        tileTracker.put(new Point2D.Double(controlledConveyors[2].GetView().getX(), controlledConveyors[2].GetView().getY()), Dir.FW);
+
                         break;
                     }
 
@@ -58,6 +62,10 @@ public class GUI {
                         switch1.setText(">");
                         controlledConveyors[0].setDir(Dir.R);
                         controlledConveyors[2].setDir(Dir.R);
+
+                        tileTracker.put(new Point2D.Double(controlledConveyors[0].GetView().getX(), controlledConveyors[0].GetView().getY()), Dir.R);
+                        tileTracker.put(new Point2D.Double(controlledConveyors[2].GetView().getX(), controlledConveyors[2].GetView().getY()), Dir.R);
+
                         break;
                     }
 
@@ -75,18 +83,27 @@ public class GUI {
                     case "<": {
                         switch2.setText("^");
                         controlledConveyors[1].setDir(Dir.FW);
+
+                        tileTracker.put(new Point2D.Double(controlledConveyors[1].GetView().getX(), controlledConveyors[1].GetView().getY()), Dir.FW);
+
                         break;
                     }
 
                     case "^": {
                         switch2.setText(">");
                         controlledConveyors[1].setDir(Dir.R);
+
+                        tileTracker.put(new Point2D.Double(controlledConveyors[1].GetView().getX(), controlledConveyors[1].GetView().getY()), Dir.R);
+
                         break;
                     }
 
                     case ">": {
                         switch2.setText("<");
                         controlledConveyors[1].setDir(Dir.L);
+
+                        tileTracker.put(new Point2D.Double(controlledConveyors[1].GetView().getX(), controlledConveyors[1].GetView().getY()), Dir.L);
+
                         break;
                     }
                 }
@@ -104,6 +121,10 @@ public class GUI {
                         switch3.setText("^");
                         controlledConveyors[3].setDir(Dir.FW);
                         controlledConveyors[4].setDir(Dir.FW);
+
+                        tileTracker.put(new Point2D.Double(controlledConveyors[3].GetView().getX(), controlledConveyors[3].GetView().getY()), Dir.FW);
+                        tileTracker.put(new Point2D.Double(controlledConveyors[4].GetView().getX(), controlledConveyors[4].GetView().getY()), Dir.FW);
+
                         break;
                     }
 
@@ -111,6 +132,10 @@ public class GUI {
                         switch3.setText(">");
                         controlledConveyors[3].setDir(Dir.R);
                         controlledConveyors[4].setDir(Dir.R);
+
+                        tileTracker.put(new Point2D.Double(controlledConveyors[3].GetView().getX(), controlledConveyors[3].GetView().getY()), Dir.R);
+                        tileTracker.put(new Point2D.Double(controlledConveyors[4].GetView().getX(), controlledConveyors[4].GetView().getY()), Dir.R);
+
                         break;
                     }
 
@@ -118,6 +143,10 @@ public class GUI {
                         switch3.setText("<");
                         controlledConveyors[3].setDir(Dir.L);
                         controlledConveyors[4].setDir(Dir.L);
+
+                        tileTracker.put(new Point2D.Double(controlledConveyors[3].GetView().getX(), controlledConveyors[3].GetView().getY()), Dir.L);
+                        tileTracker.put(new Point2D.Double(controlledConveyors[4].GetView().getX(), controlledConveyors[4].GetView().getY()), Dir.L);
+
                         break;
                     }
                 }
@@ -134,12 +163,18 @@ public class GUI {
                     case "<": {
                         switch4.setText("^");
                         controlledConveyors[5].setDir(Dir.FW);
+
+                        tileTracker.put(new Point2D.Double(controlledConveyors[5].GetView().getX(), controlledConveyors[5].GetView().getY()), Dir.FW);
+
                         break;
                     }
 
                     case "^": {
                         switch4.setText("<");
                         controlledConveyors[5].setDir(Dir.L);
+
+                        tileTracker.put(new Point2D.Double(controlledConveyors[5].GetView().getX(), controlledConveyors[5].GetView().getY()), Dir.L);
+
                         break;
                     }
 
@@ -160,34 +195,6 @@ public class GUI {
                 int shapeNum = (int)(Math.random() * (double)shapeNumRange) + 1;
                 Shape sh1 = new Shape(ShapeTypes.square, controlledConveyors, pane, tileTracker, startingPointTo, startingPointFrom, primaryStage);
 
-
-                // transition object one
-//                TranslateTransition tt1 = new TranslateTransition(Duration.millis(500), obj);
-//                tt1.setByY(-64);
-//                tt1.play();
-
-
-//                complete = false;
-//
-//                while (!complete) {
-//                    switch (tileTracker.get(new Point2D.Double(obj.getX(), obj.getY()))) {
-//                        case FW:
-//                            tt1.setByY(-64);
-//                            break;
-//                        case L:
-//                            tt1.setByX(-64);
-//                            break;
-//                        case R:
-//                            tt1.setByX(+64);
-//                            break;
-//                    }
-//
-//                    //96 and 21 are coordinates of the destination square for testing
-//                    if (obj.getX() == 96 && obj.getY() == pane.getChildren().get(21).getLayoutX()){
-//                        complete = true;
-//                    }
-//
-//                }
 
             }
         });
