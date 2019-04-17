@@ -27,16 +27,16 @@ public class Main extends Application {
 		TileGrid layout = new TileGrid(12, 11);
 
 		// to pass to ControlledConveyor constructor
-		Dir [] dirArrayLR = {Dir.L, Dir.R};
-		Dir [] dirArrayLRF = {Dir.L, Dir.R, Dir.FW};
+		Dir [] dirArrayLF = {Dir.L, Dir.FW};
+		Dir [] dirArrayRF = {Dir.R, Dir.FW};
 
 		final ControlledConveyor[] controlledConveyors = new ControlledConveyor[] {
+				new ControlledConveyor(dirArrayRF),
+				new ControlledConveyor(),
+				new ControlledConveyor(dirArrayRF),
 				new ControlledConveyor(),
 				new ControlledConveyor(),
-				new ControlledConveyor(),
-				new ControlledConveyor(),
-				new ControlledConveyor(),
-				new ControlledConveyor()};
+				new ControlledConveyor(dirArrayLF)};
 
 		final int staticConveyorsFW = 34;
 		final int staticConveyorsR = 6;

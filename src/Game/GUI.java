@@ -38,14 +38,6 @@ public class GUI {
 			"Button.Go_Normal.png";
 	private static final String imgPath_Restart	= imgPath_Dir +
 			"Button.Close_Normal.png";
-	
-	//Controls
-	private static final String imgPath_DirL	= imgPath_Dir +
-			"Button.Dir.L_Normal.png";
-	private static final String imgPath_DirR	= imgPath_Dir +
-			"Button.Dir.R_Normal.png";
-	private static final String imgPath_DirFW	= imgPath_Dir +
-			"Button.Dir.FW_Normal.png";
 
     private boolean complete;
 
@@ -57,153 +49,42 @@ public class GUI {
         primaryStage.setOnCloseRequest(e -> Platform.exit());
 
         closeButton.setOnAction(e -> Platform.exit());
-        controlledConveyors[0].setDir(Dir.FW);
-        controlledConveyors[2].setDir(Dir.FW);
-        controlledConveyors[5].setDir(Dir.FW);
 
 
+	
+		Button switch1 = new DirectionalButton(
+				new ControlledConveyor[] {
+						controlledConveyors[0],
+						controlledConveyors[2]
+				},
+				new Dir[] {
+						Dir.R,
+						Dir.FW
+				}
+		);
 
-        Button switch1 = new Button("^");
-        switch1.addEventHandler(ActionEvent.ACTION, new EventHandler<ActionEvent>() {
-            @Override
-            public void handle (ActionEvent event) {
-                switch (switch1.getText()) {
-
-                    case ">": {
-                        switch1.setText("^");
-                        controlledConveyors[0].setDir(Dir.FW);
-                        controlledConveyors[2].setDir(Dir.FW);
-
-                        tileTracker.put(new Point2D.Double(controlledConveyors[0].GetView().getX(), controlledConveyors[0].GetView().getY()), Dir.FW);
-                        tileTracker.put(new Point2D.Double(controlledConveyors[2].GetView().getX(), controlledConveyors[2].GetView().getY()), Dir.FW);
-
-                        break;
-                    }
-
-                    case "^": {
-                        switch1.setText(">");
-                        controlledConveyors[0].setDir(Dir.R);
-                        controlledConveyors[2].setDir(Dir.R);
-
-                        tileTracker.put(new Point2D.Double(controlledConveyors[0].GetView().getX(), controlledConveyors[0].GetView().getY()), Dir.R);
-                        tileTracker.put(new Point2D.Double(controlledConveyors[2].GetView().getX(), controlledConveyors[2].GetView().getY()), Dir.R);
-
-                        break;
-                    }
-
-                }
-            }
-        });
-
-        Button switch2 = new Button();
-        switch2.setGraphic(new ImageView(new Image(getClass().getResource
-						(imgPath_DirFW).toString(),true)));
-        switch2.setPadding(Insets.EMPTY);
-        switch2.addEventHandler(ActionEvent.ACTION, new EventHandler<ActionEvent>() {
-            @Override
-            public void handle (ActionEvent event) {
-                switch (switch2.getText()) {
-
-                    case "<": {
-                        switch2.setText("^");
-                        controlledConveyors[1].setDir(Dir.FW);
-
-                        tileTracker.put(new Point2D.Double(controlledConveyors[1].GetView().getX(), controlledConveyors[1].GetView().getY()), Dir.FW);
-
-                        break;
-                    }
-
-                    case "^": {
-                        switch2.setText(">");
-                        controlledConveyors[1].setDir(Dir.R);
-
-                        tileTracker.put(new Point2D.Double(controlledConveyors[1].GetView().getX(), controlledConveyors[1].GetView().getY()), Dir.R);
-
-                        break;
-                    }
-
-                    case ">": {
-                        switch2.setText("<");
-                        controlledConveyors[1].setDir(Dir.L);
-
-                        tileTracker.put(new Point2D.Double(controlledConveyors[1].GetView().getX(), controlledConveyors[1].GetView().getY()), Dir.L);
-
-                        break;
-                    }
-                }
-            }
-        });
-
-        Button switch3 = new Button("^");
-        switch3.addEventHandler(ActionEvent.ACTION, new EventHandler<ActionEvent>() {
-            @Override
-            public void handle (ActionEvent event) {
-                switch (switch3.getText()) {
-
-                    case "<": {
-                        switch3.setText("^");
-                        controlledConveyors[3].setDir(Dir.FW);
-                        controlledConveyors[4].setDir(Dir.FW);
-
-                        tileTracker.put(new Point2D.Double(controlledConveyors[3].GetView().getX(), controlledConveyors[3].GetView().getY()), Dir.FW);
-                        tileTracker.put(new Point2D.Double(controlledConveyors[4].GetView().getX(), controlledConveyors[4].GetView().getY()), Dir.FW);
-
-                        break;
-                    }
-
-                    case "^": {
-                        switch3.setText(">");
-                        controlledConveyors[3].setDir(Dir.R);
-                        controlledConveyors[4].setDir(Dir.R);
-
-                        tileTracker.put(new Point2D.Double(controlledConveyors[3].GetView().getX(), controlledConveyors[3].GetView().getY()), Dir.R);
-                        tileTracker.put(new Point2D.Double(controlledConveyors[4].GetView().getX(), controlledConveyors[4].GetView().getY()), Dir.R);
-
-                        break;
-                    }
-
-                    case ">": {
-                        switch3.setText("<");
-                        controlledConveyors[3].setDir(Dir.L);
-                        controlledConveyors[4].setDir(Dir.L);
-
-                        tileTracker.put(new Point2D.Double(controlledConveyors[3].GetView().getX(), controlledConveyors[3].GetView().getY()), Dir.L);
-                        tileTracker.put(new Point2D.Double(controlledConveyors[4].GetView().getX(), controlledConveyors[4].GetView().getY()), Dir.L);
-
-                        break;
-                    }
-                }
-            }
-        });
-
-        Button switch4 = new Button("^");
-        switch4.addEventHandler(ActionEvent.ACTION, new EventHandler<ActionEvent>() {
-            @Override
-            public void handle (ActionEvent event) {
-                switch (switch4.getText()) {
-
-                    case "<": {
-                        switch4.setText("^");
-                        controlledConveyors[5].setDir(Dir.FW);
-
-                        tileTracker.put(new Point2D.Double(controlledConveyors[5].GetView().getX(), controlledConveyors[5].GetView().getY()), Dir.FW);
-
-                        break;
-                    }
-
-                    case "^": {
-                        switch4.setText("<");
-                        controlledConveyors[5].setDir(Dir.L);
-
-                        tileTracker.put(new Point2D.Double(controlledConveyors[5].GetView().getX(), controlledConveyors[5].GetView().getY()), Dir.L);
-
-                        break;
-                    }
-
-                    }
-                }
-
-        });
+        Button switch2 = new DirectionalButton(
+			new ControlledConveyor[] {
+				controlledConveyors[1]
+			}
+		);
+	
+		Button switch3 = new DirectionalButton(
+				new ControlledConveyor[] {
+						controlledConveyors[3],
+						controlledConveyors[4]
+				}
+		);
+	
+		Button switch4 = new DirectionalButton(
+				new ControlledConveyor[] {
+						controlledConveyors[5]
+				},
+				new Dir[] {
+						Dir.L,
+						Dir.FW
+				}
+		);
         
         // "Restart" Button
         Button restartButton = new Button("Restart");
