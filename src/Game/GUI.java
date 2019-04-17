@@ -45,7 +45,7 @@ public class GUI {
     	
 
 
-        // Close Button    
+        // "Close" Button    
 	    Button closeButton = new Button("Close");
         closeButton.setOnAction(new EventHandler<ActionEvent>() {
 	        public void handle(ActionEvent event) {
@@ -91,13 +91,15 @@ public class GUI {
         
         // "Restart" Button
         Button restartButton = new Button("Restart");
-        restartButton.setOnAction(__ -> {
-            System.out.println("Restarting game!");
-            primaryStage.close();
-            //Quick & dirty fix until an instances arrayList is implemented in Shape.java
-			Platform.runLater( () -> (new Main()).start (new Stage()));
-			//TODO ^^^ Replace this atrocity with something cleaner asap
-        });
+        restartButton.setOnAction(new EventHandler<ActionEvent>() {
+	        public void handle(ActionEvent event) {
+	        	System.out.println("Restarting game!");
+	            primaryStage.close();
+	            //Quick & dirty fix until an instances arrayList is implemented in Shape.java
+				Platform.runLater( () -> (new Main()).start (new Stage()));
+				//TODO ^^^ Replace this atrocity with something cleaner asap
+	        }
+	      });
 
         //button to generate next piece
         Button go = new Button("go!");
