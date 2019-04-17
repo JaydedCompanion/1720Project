@@ -1,5 +1,9 @@
 package Game;
 
+import java.awt.geom.Point2D;
+import java.util.HashMap;
+import javafx.stage.Stage;
+
 enum ShapeTypes {
     circle,
     square,
@@ -31,7 +35,7 @@ public class Shape extends GridTileBase {
 
     private ShapeTypes shape;
     
-    public Shape(ShapeTypes shape) {
+    public Shape (ShapeTypes shape, ControlledConveyor[] controlledConveyors, TileGrid pane, HashMap<Point2D.Double, Dir> tileTracker, int startingPointTo, int startingPointFrom, Stage primaryStage) {
         
         this.shape = shape;
         
@@ -52,6 +56,31 @@ public class Shape extends GridTileBase {
         }
         
         setAnimPath(paths[Math.round(rand * paths.length)]);
+
+		int range = startingPointTo - startingPointFrom + 1;
+		int startPoint = (int)(Math.random() * (double)range) + startingPointFrom;
+
+		switch(startPoint) {
+			case 30:
+				pane.add(this, 1, 10);
+//				this.setX(96.0D);
+//				this.setY(672.0D);
+				break;
+			case 31:
+				pane.add(this, 4, 10);
+//				obj.setX(288.0D);
+//				obj.setY(672.0D);
+				break;
+			case 32:
+				pane.add(this, 7, 10);
+//				obj.setX(480.0D);
+//				obj.setY(672.0D);
+				break;
+			case 33:
+				pane.add(this, 10, 10);
+//				obj.setX(672.0D);
+//				obj.setY(672.0D);
+		}
     
     }
     

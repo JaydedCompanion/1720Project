@@ -156,67 +156,38 @@ public class GUI {
             public void handle (ActionEvent event) {
 
                 //random start point for the next piece
-                int range = startingPointTo - startingPointFrom + 1;
-                int startPoint = (int)(Math.random() * range)+startingPointFrom ;
-                Path p1 = new Path();
+                int shapeNumRange = 3;
+                int shapeNum = (int)(Math.random() * (double)shapeNumRange) + 1;
+                Shape sh1 = new Shape(ShapeTypes.square, controlledConveyors, pane, tileTracker, startingPointTo, startingPointFrom, primaryStage);
 
-                Rectangle obj = new Rectangle(15,15, 64, 64);
-
-                //place object on the starting point
-                switch (startPoint) {
-                    case 30: {
-                        pane.add(obj, 1, 10);
-                  //      System.out.println(pane.getConveyor(1, 10));
-                        break;
-                    }
-
-                    case 31: {
-                        pane.add(obj, 4, 10);
-                  //      System.out.println(pane.getConveyor(4, 10));
-                        break;
-                    }
-
-                    case 32: {
-                        pane.add(obj, 7, 10);
-                  //      System.out.println(pane.getConveyor(7, 10));
-                        break;
-                    }
-
-                    case 33: {
-                        pane.add(obj, 10, 10);
-                  //     System.out.println(pane.getConveyor(10, 10));
-                        break;
-                    }
-
-                }
 
                 // transition object one
-                TranslateTransition tt1 = new TranslateTransition(Duration.millis(500), obj);
-                tt1.setByY(-64);
-                tt1.play();
+//                TranslateTransition tt1 = new TranslateTransition(Duration.millis(500), obj);
+//                tt1.setByY(-64);
+//                tt1.play();
 
 
-                complete = false;
-
-                while (!complete) {
-                    switch (tileTracker.get(new Point2D.Double(obj.getX(), obj.getY()))) {
-                        case FW:
-                            tt1.setByY(-64);
-                            break;
-                        case L:
-                            tt1.setByX(-64);
-                            break;
-                        case R:
-                            tt1.setByX(+64);
-                            break;
-                    }
-
-                    //96 and 21 are coordinates of the destination square for testing
-                    if (obj.getX() == 96 && obj.getY() == pane.getChildren().get(21).getLayoutX()){
-                        complete = true;
-                    }
-
-                }
+//                complete = false;
+//
+//                while (!complete) {
+//                    switch (tileTracker.get(new Point2D.Double(obj.getX(), obj.getY()))) {
+//                        case FW:
+//                            tt1.setByY(-64);
+//                            break;
+//                        case L:
+//                            tt1.setByX(-64);
+//                            break;
+//                        case R:
+//                            tt1.setByX(+64);
+//                            break;
+//                    }
+//
+//                    //96 and 21 are coordinates of the destination square for testing
+//                    if (obj.getX() == 96 && obj.getY() == pane.getChildren().get(21).getLayoutX()){
+//                        complete = true;
+//                    }
+//
+//                }
 
             }
         });
