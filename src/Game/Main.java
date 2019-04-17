@@ -180,12 +180,6 @@ public class Main extends Application {
 		}
 
 
-
-		System.out.println("BOOOO " + tileTracker);
-		System.out.println(controlledConveyors[1].GetView().getX());
-		System.out.println(controlledConveyors[1].GetView().getY());
-
-
 		GUI gui = new GUI(layout, controlledConveyors, tileTracker, startingPointTo, startingPointFrom, primaryStage);
 		
 	}
