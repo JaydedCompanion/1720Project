@@ -61,7 +61,7 @@ public class Shape extends GridTileBase {
                 break;
         }
         
-        setAnimPath(paths[Math.round(rand * paths.length)]);
+        setAnimPath(paths[Math.round(rand * paths.length - 1)]);
 
 		int range = startingPointTo - startingPointFrom + 1;
 		int startPoint = (int)(Math.random() * (double)range) + startingPointFrom;

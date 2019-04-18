@@ -37,16 +37,42 @@ public class GUI {
 	private static final String imgPath_Go		= imgPath_Dir +
 			"Button.Go_Normal.png";
 	private static final String imgPath_Restart	= imgPath_Dir +
-			"Button.Close_Normal.png";
+			"Button.Restart_Normal.png";
+	
+	private static final int BUTTON_ROW_INDEX = 11; //Stores index of row that
+	// holds buttons
 
     private boolean complete;
 
     public GUI(TileGrid pane, ControlledConveyor[] controlledConveyors, HashMap<Point2D.Double, Dir> tileTracker, int startingPointTo, int startingPointFrom, Stage primaryStage) {
-    	
-
+	
+    
+	
+		ImageView gap = new ImageView(new Image(
+				getClass().getResource(imgPath_Gap).toString(),
+				true
+		));
+		gap.setPreserveRatio(false);//Allow stretching
+		gap.setFitWidth(GridTileBase.SIZE*pane.getCols());
+		pane.add(gap,0, BUTTON_ROW_INDEX, pane.getCols(), 1);
+	
+		ImageView iconClose = new ImageView(new Image(
+				getClass().getResource(imgPath_Close).toString(),
+				true
+		));
+		ImageView iconGo = new ImageView(new Image(
+				getClass().getResource(imgPath_Go).toString(),
+				true
+		));
+		ImageView iconRestart = new ImageView(new Image(
+				getClass().getResource(imgPath_Restart).toString(),
+				true
+		));
 
         // "Close" Button    
-	    Button closeButton = new Button("Close");
+	    Button closeButton = new Button();
+		closeButton.setPadding(Insets.EMPTY);
+		closeButton.setGraphic(iconClose);
         closeButton.setOnAction(new EventHandler<ActionEvent>() {
 	        public void handle(ActionEvent event) {
 	          Platform.exit();
@@ -90,7 +116,9 @@ public class GUI {
 		);
         
         // "Restart" Button
-        Button restartButton = new Button("Restart");
+        Button restartButton = new Button();
+		restartButton.setPadding(Insets.EMPTY);
+		restartButton.setGraphic(iconRestart);
         restartButton.setOnAction(new EventHandler<ActionEvent>() {
 	        public void handle(ActionEvent event) {
 	        	System.out.println("Restarting game!");
@@ -102,7 +130,9 @@ public class GUI {
 	      });
 
         //button to generate next piece
-        Button go = new Button("go!");
+        Button go = new Button();
+		go.setPadding(Insets.EMPTY);
+		go.setGraphic(iconGo);
         go.addEventHandler(ActionEvent.ACTION, new EventHandler<ActionEvent>() {
             @Override
             public void handle (ActionEvent event) {
@@ -118,13 +148,13 @@ public class GUI {
         
         //Add all the buttons to the pane at the end, to ensure all nodes are
 		//added in the correct order (otherwise tab functionality will break)
-		pane.add(go, 0, 11, 2, 1);
-		pane.add(switch1, 1, 11);
-		pane.add(restartButton, 2, 11);
-		pane.add(switch2, 4, 11);
-		pane.add(switch3, 7, 11);
-		pane.add(switch4, 10, 11);
-		pane.add(closeButton, 11, 11);
+		pane.add(go, 0, BUTTON_ROW_INDEX, 2, 1);
+		pane.add(switch1, 1, BUTTON_ROW_INDEX);
+		pane.add(restartButton, 2, BUTTON_ROW_INDEX);
+		pane.add(switch2, 4, BUTTON_ROW_INDEX);
+		pane.add(switch3, 7, BUTTON_ROW_INDEX);
+		pane.add(switch4, 10, BUTTON_ROW_INDEX);
+		pane.add(closeButton, 11, BUTTON_ROW_INDEX);
 		
     }
 }

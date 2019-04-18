@@ -145,10 +145,13 @@ public class Main extends Application {
 		primaryStage.setTitle("SpriteAnimation Test!");
 		primaryStage.setScene(new Scene(
 				layout,
-				(layout.getCols()+1)*64,
-				(layout.getRows()+1)*64
+				(layout.getCols())*64,
+				(layout.getRows()+1)*64 //Add one extra row height for buttons
 		));
 		primaryStage.show();
+		//Don't let the window become smaller than the play area
+		primaryStage.setMinHeight(primaryStage.getHeight());
+		primaryStage.setMinWidth(primaryStage.getWidth());
 
 		// to map directions of static FW conveyors
 		int count = 0;
