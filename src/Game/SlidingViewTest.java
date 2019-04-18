@@ -54,15 +54,9 @@ public class SlidingViewTest extends Application {
 		primaryStage.show();
 		window = primaryStage;
 		GridPane grid = new GridPane();
-		
-		DropShadow dropShadow = new DropShadow();
-		dropShadow.setRadius(5.0);
-		dropShadow.setOffsetX(3.0);
-		dropShadow.setOffsetY(3.0);
-		dropShadow.setColor(Color.color(0.4, 0.5, 0.5));
 
 		Reflection reflection = new Reflection();
-		reflection.setFraction(0.3);
+		reflection.setFraction (1);
 		
 		primaryStage.setTitle("Game Project");
 		
@@ -72,21 +66,23 @@ public class SlidingViewTest extends Application {
 		
 		
 		
-		StackPane speech = new StackPane();       
-		Rectangle rect = new Rectangle(200,100);
-        rect.setFill(Color.ALICEBLUE);
-		Label label = new Label("Welcome! We need your help!");
-		label.setFont(Font.font("Impact", FontWeight.BOLD, 30));
-        speech.getChildren().addAll(rect, label);
-		
 		Text textFont = new Text("GUIDE THE ITEMS INTO THE CORRECT HOLE!");
 		textFont.setFont(Font.font("Verdana", FontWeight.BOLD, 30));
 		textFont.setUnderline(true);
-		textFont.setFill(Color.CORAL);
+		textFont.setFill(Color.RED);
+		textFont.setStroke(Color.YELLOW);
+		textFont.setStrokeWidth(0.6);
 		
 		Text developersText = new Text("Developers: Juan Callejas, Vladislav Luchnikov, Tran Pham");
 		developersText.setFont(Font.font("Arial", FontWeight.BOLD, FontPosture.ITALIC, 30));
-		developersText.setFill(Color.RED);
+		developersText.setFill(Color.ORANGE);
+		developersText.setStroke(Color.RED);
+		developersText.setStrokeWidth(0.6);
+		
+		Text welcome = new Text ("Welcome! We need your help!");
+		welcome.setFont(Font.font("Impact", FontWeight.BOLD, 30));
+		welcome.setStroke(Color.YELLOW);
+		welcome.setStrokeWidth(2);
 		
 		Image angry = new Image("Res/angry.png");
 		ImageView imgNode2 = new ImageView(angry);
@@ -94,14 +90,14 @@ public class SlidingViewTest extends Application {
 		imgNode2.setFitWidth(200);
 							
 		Button nextView = new Button("Click this button for tutorial.");
-		nextView.setEffect(dropShadow);
+		nextView.setEffect(reflection);
 		nextView.setOnAction(new EventHandler<ActionEvent>() {
 			 public void handle(ActionEvent event) {
 				 window.setScene(scene2);
 		        }
 		});		
-		
-		VBox view1 = new VBox (textFont, developersText, label, imgNode2, nextView);
+				
+		VBox view1 = new VBox (textFont, developersText, welcome, imgNode2, nextView);
 		view1.setAlignment(Pos.TOP_LEFT);
 		view1.setSpacing(20);
 		view1.setPadding(new Insets(20));
@@ -115,7 +111,7 @@ public class SlidingViewTest extends Application {
 		
 		Button button2 = new Button("Got it? Good! Let's begin! Click this button to play the game!");
 		button2.setPadding(new Insets(10));
-		button2.setEffect(dropShadow);
+		button2.setEffect(reflection);
 		button2.setOnAction(new EventHandler<ActionEvent>() {
 			 public void handle(ActionEvent event) {
 				 window.setScene(scene1);
@@ -125,18 +121,23 @@ public class SlidingViewTest extends Application {
 		Text tutorialText = new Text("How to Play:");
 		tutorialText.setFont(Font.font("Times New Roman", FontWeight.BOLD, 20));
 		tutorialText.setUnderline(true);
+		tutorialText.setFill(Color.WHITE);
 		
 		Text go = new Text("Click the 'green arrow icon' to start the game. The given items will start moving on the conveyors.");
 		go.setFont(Font.font("Monospaced", FontWeight.BOLD, 15));
+		go.setFill(Color.WHITE);
 
 		Text close = new Text("Click the 'red cross icon' to quit the game.");
 		close.setFont(Font.font("Monospaced", FontWeight.BOLD, 15));
+		close.setFill(Color.WHITE);
 		
 		Text restart = new Text("Click the 'orange restart arrow icon' to reset the game.");
 		restart.setFont(Font.font("Monospaced", FontWeight.BOLD, 15));
+		restart.setFill(Color.WHITE);
 		
 		Text directionalText = new Text("Click these three different coloured arrows below to change the direction of the conveyors' panels.");
 		directionalText.setFont(Font.font("Monospaced", FontWeight.BOLD, 15));
+		directionalText.setFill(Color.WHITE);
 
 		Button goButton = new Button("", new ImageView("Res/Buttons/Button.Go_Normal.png"));
 		goButton.setEffect(reflection);
@@ -150,8 +151,8 @@ public class SlidingViewTest extends Application {
 		
 		// Border line
 		StackPane root = new StackPane(view1);
-		String border = "-fx-border-color: DARKBLUE;\n" + "-fx-border-insets: 5;\n" 
-		+ "-fx-border-width: 6;\n" + "-fx-border-style: dashed;\n";
+		String border = "-fx-border-color: YELLOW;\n" + "-fx-border-insets: 5;\n" 
+		+ "-fx-border-width: 6;\n" + "-fx-border-style: dashed;\n" + "-fx-background-color: black";
 		root.getChildren().addAll(tutorialText, go, goButton, close, closeButton, 
 				restart, restartButton, directionalText, forwardButton, leftButton, rightButton, button2);
 		root.setAlignment(Pos.TOP_CENTER);
@@ -189,7 +190,7 @@ public class SlidingViewTest extends Application {
 		});
 		
 		// Show scene
-		scene2 = new Scene(root, WIDTH, HEIGHT, Color.ANTIQUEWHITE);
+		scene2 = new Scene(root, WIDTH, HEIGHT);
 		primaryStage.setScene(scene2);
 		primaryStage.show();
 		
@@ -205,4 +206,4 @@ public class SlidingViewTest extends Application {
 		
 		launch(args);
 	}
-}	
+}
