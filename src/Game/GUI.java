@@ -121,13 +121,12 @@ public class GUI {
 		restartButton.setGraphic(iconRestart);
         restartButton.setOnAction(new EventHandler<ActionEvent>() {
 	        public void handle(ActionEvent event) {
-	        	System.out.println("Restarting game!");
-	            primaryStage.close();
-	            //Quick & dirty fix until an instances arrayList is implemented in Shape.java
-				Platform.runLater( () -> (new Main()).start (new Stage()));
-				//TODO ^^^ Replace this atrocity with something cleaner asap
-	        }
-	      });
+				System.out.println("Restarting game!");
+				primaryStage.close();
+				Main game = new Main();
+				game.start(primaryStage);
+			}
+        });
 
         //button to generate next piece
         Button go = new Button();

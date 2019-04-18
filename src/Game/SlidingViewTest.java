@@ -114,8 +114,10 @@ public class SlidingViewTest extends Application {
 		button2.setEffect(reflection);
 		button2.setOnAction(new EventHandler<ActionEvent>() {
 			 public void handle(ActionEvent event) {
-				 window.setScene(scene1);
-		        }
+			 	//Create a new instance of Main and start it in this stage
+			 	Main game = new Main();
+			 	game.start(primaryStage);
+			 }
 		});	
 	        
 		Text tutorialText = new Text("How to Play:");
