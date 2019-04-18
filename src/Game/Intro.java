@@ -40,7 +40,7 @@ import javafx.util.Duration;
  * no credit for it and we will simply use it as a pre-written library by a 3rd party.
  */
 
-public class SlidingViewTest extends Application {
+public class Intro extends Application {
 			
 	private int WIDTH = 1000;
 	private int HEIGHT = 1000;
@@ -114,9 +114,11 @@ public class SlidingViewTest extends Application {
 		button2.setEffect(reflection);
 		button2.setOnAction(new EventHandler<ActionEvent>() {
 			 public void handle(ActionEvent event) {
+				 
 			 	//Create a new instance of Main and start it in this stage
 			 	Main game = new Main();
 			 	game.start(primaryStage);
+			 	
 			 }
 		});	
 	        
@@ -155,10 +157,6 @@ public class SlidingViewTest extends Application {
 		StackPane root = new StackPane(view1);
 		String border = "-fx-border-color: YELLOW;\n" + "-fx-border-insets: 5;\n" 
 		+ "-fx-border-width: 6;\n" + "-fx-border-style: dashed;\n" + "-fx-background-color: black";
-		root.getChildren().addAll(tutorialText, go, goButton, close, closeButton, 
-				restart, restartButton, directionalText, forwardButton, leftButton, rightButton, button2);
-		root.setAlignment(Pos.TOP_CENTER);
-		root.setPrefSize(WIDTH, HEIGHT);
 		root.setStyle(border);
 		
 		VBox view2 = new VBox(tutorialText, go, goButton, close, closeButton, 
