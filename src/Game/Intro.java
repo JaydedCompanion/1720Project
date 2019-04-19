@@ -79,25 +79,42 @@ public class Intro extends Application {
 		developersText.setStroke(Color.RED);
 		developersText.setStrokeWidth(0.6);
 		
-		Text welcome = new Text ("Welcome! We need your help!");
-		welcome.setFont(Font.font("Impact", FontWeight.BOLD, 30));
-		welcome.setStroke(Color.YELLOW);
-		welcome.setStrokeWidth(2);
+		Image welcome = new Image ("Res/Speech_Bubble.png");
+		ImageView welcomeView = new ImageView(welcome);
+		welcomeView.setPreserveRatio(true);
+		welcomeView.setFitWidth(300);
 		
-		Image angry = new Image("Res/angry.png");
-		ImageView imgNode2 = new ImageView(angry);
-		imgNode2.setPreserveRatio(true);
-		imgNode2.setFitWidth(200);
+		Image angry = new Image("Res/Manajerk_Angry.png");
+		ImageView angryView = new ImageView(angry);
+		angryView.setPreserveRatio(true);
+		angryView.setFitWidth(200);
+		
+		Image balls = new Image("Res/ConveyorPayloads/Three_Balls.png");
+		ImageView ballsView = new ImageView(balls);
+		ballsView.setPreserveRatio(true);
+		ballsView.setFitWidth(200);
+		
+		Image squares = new Image("Res/ConveyorPayloads/Three_Squares.png");
+		ImageView squaresView = new ImageView(squares);
+		squaresView.setPreserveRatio(true);
+		squaresView.setFitWidth(200);
+		
+		Image triangles = new Image("Res/ConveyorPayloads/Two_Triangles.png");
+		ImageView trianglesView = new ImageView(triangles);
+		trianglesView.setPreserveRatio(true);
+		trianglesView.setFitWidth(140);
 							
-		Button nextView = new Button("Click this button for tutorial.");
+		Button nextView = new Button("Click this button for TUTORIAL.");
 		nextView.setEffect(reflection);
+		nextView.setStyle("-fx-font: 22 VERDANA; -fx-base: #FAFAD2; -fx-border-width: 0;");
 		nextView.setOnAction(new EventHandler<ActionEvent>() {
 			 public void handle(ActionEvent event) {
 				 window.setScene(scene2);
 		        }
 		});		
 				
-		VBox view1 = new VBox (textFont, developersText, welcome, imgNode2, nextView);
+		VBox view1 = new VBox (textFont, developersText, welcomeView, angryView, 
+				ballsView, squaresView, trianglesView, nextView);
 		view1.setAlignment(Pos.TOP_LEFT);
 		view1.setSpacing(20);
 		view1.setPadding(new Insets(20));
@@ -108,14 +125,15 @@ public class Intro extends Application {
 		
 		
 		
-		
-		Button button2 = new Button("Got it? Good! Let's begin! Click this button to play the game!");
+		// Button to third scene (MAIN class)
+		Button button2 = new Button("Got it? Good! Let's begin!\nClick this button to play the game!");
 		button2.setPadding(new Insets(10));
 		button2.setEffect(reflection);
+		button2.setStyle("-fx-font: 22 VERDANA; -fx-base: #FAFAD2; -fx-border-width: 0;");
 		button2.setOnAction(new EventHandler<ActionEvent>() {
 			 public void handle(ActionEvent event) {
 				 
-			 	//Create a new instance of Main and start it in this stage
+			 	//Create a new instance of Main and start it in this stage.
 			 	Main game = new Main();
 			 	game.start(primaryStage);
 			 	
@@ -123,11 +141,11 @@ public class Intro extends Application {
 		});	
 	        
 		Text tutorialText = new Text("How to Play:");
-		tutorialText.setFont(Font.font("Times New Roman", FontWeight.BOLD, 20));
+		tutorialText.setFont(Font.font("IMPACT", FontWeight.BOLD, 20));
 		tutorialText.setUnderline(true);
 		tutorialText.setFill(Color.WHITE);
 		
-		Text go = new Text("Click the 'green arrow icon' to start the game. The given items will start moving on the conveyors.");
+		Text go = new Text("Click the 'green arrow icon' to start the game.\nThe given items will start moving on the conveyors.");
 		go.setFont(Font.font("Monospaced", FontWeight.BOLD, 15));
 		go.setFill(Color.WHITE);
 
@@ -139,7 +157,7 @@ public class Intro extends Application {
 		restart.setFont(Font.font("Monospaced", FontWeight.BOLD, 15));
 		restart.setFill(Color.WHITE);
 		
-		Text directionalText = new Text("Click these three different coloured arrows below to change the direction of the conveyors' panels.");
+		Text directionalText = new Text("Click these 3 different coloured arrows below to change the direction of the conveyors' panels.");
 		directionalText.setFont(Font.font("Monospaced", FontWeight.BOLD, 15));
 		directionalText.setFill(Color.WHITE);
 
@@ -149,9 +167,13 @@ public class Intro extends Application {
 		closeButton.setEffect(reflection);
 		Button restartButton = new Button("", new ImageView("Res/Buttons/Button.Restart_Normal.png"));
 		restartButton.setEffect(reflection);
-		Button forwardButton = new Button("", new ImageView("Res/Buttons/Button.Dir.FW_Normal.png"));
-		Button leftButton = new Button("", new ImageView("Res/Buttons/Button.Dir.L_Normal.png"));
-		Button rightButton = new Button("", new ImageView("Res/Buttons/Button.Dir.R_Normal.png"));
+		
+		Image FW_L_R_View = new Image("Res/Buttons/FW_L_R_Normal.png");
+		ImageView mergeView = new ImageView(FW_L_R_View);
+		mergeView.setPreserveRatio(true);
+		mergeView.setFitWidth(230);
+		Button FW_L_R_Button = new Button("", mergeView);
+		FW_L_R_Button.setEffect(reflection);
 		
 		// Border line
 		StackPane root = new StackPane(view1);
@@ -160,7 +182,7 @@ public class Intro extends Application {
 		root.setStyle(border);
 		
 		VBox view2 = new VBox(tutorialText, go, goButton, close, closeButton, 
-				restart, restartButton, directionalText, forwardButton, leftButton, rightButton, button2);
+				restart, restartButton, directionalText, FW_L_R_Button, button2);
 		view2.setAlignment(Pos.TOP_LEFT);
 		view2.setSpacing(10);
 		view2.setPadding(new Insets(15, 20, 10, 10));
